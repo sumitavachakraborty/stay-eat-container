@@ -61,20 +61,23 @@ export default function PropertyDetail() {
   ];
 
   return (
-    <div className="app" style={{ minHeight: '100vh' }}>
+    // detail-page class hides the BottomTabBar via CSS
+    <div className="app detail-page" style={{ minHeight: '100vh' }}>
 
       {/* Mini nav bar */}
-      <div style={{
-        padding: '20px 56px',
-        borderBottom: '1px solid var(--c-hairline)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: '#fff',
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-      }}>
+      <div
+        className="detail-nav"
+        style={{
+          borderBottom: '1px solid var(--c-hairline)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          background: '#fff',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+        }}
+      >
         <button
           className="btn-secondary"
           style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
@@ -97,10 +100,10 @@ export default function PropertyDetail() {
       </div>
 
       {/* Title + metadata */}
-      <div style={{ padding: '28px 56px 0' }}>
+      <div className="detail-title-area">
         <h1
-          className="display"
-          style={{ fontSize: 56, margin: 0, lineHeight: 1, letterSpacing: '-0.03em', maxWidth: 800, color: 'var(--c-near-black)' }}
+          className="display detail-title"
+          style={{ margin: 0, lineHeight: 1, letterSpacing: '-0.03em', maxWidth: 800, color: 'var(--c-near-black)' }}
         >
           {p.name}
         </h1>
@@ -125,35 +128,44 @@ export default function PropertyDetail() {
         </div>
       </div>
 
-      {/* Photo grid */}
-      <div style={{ padding: '20px 56px 0' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '2fr 1fr 1fr',
-          gridTemplateRows: '1fr 1fr',
-          gap: 8,
-          height: 460,
-          borderRadius: 22,
-          overflow: 'hidden',
-        }}>
-          <div style={{ gridRow: 'span 2', backgroundImage: `url(${gridPhotos[0]})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-          {gridPhotos.slice(1, 3).map((src, i) => (
-            <div key={i} style={{ backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-          ))}
-          <div style={{ backgroundImage: `url(${gridPhotos[3]})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-          <div style={{ backgroundImage: `url(${gridPhotos[4]})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
-            <button
-              className="btn-primary invert"
-              style={{ position: 'absolute', bottom: 14, right: 14, padding: '10px 16px', fontSize: 13 }}
-            >
-              <Icon.Camera size={14} /> View all photos
-            </button>
-          </div>
+      {/* Desktop photo grid */}
+      <div className="detail-photo-grid">
+        <div style={{ gridRow: 'span 2', backgroundImage: `url(${gridPhotos[0]})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        {gridPhotos.slice(1, 3).map((src, i) => (
+          <div key={i} style={{ backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        ))}
+        <div style={{ backgroundImage: `url(${gridPhotos[3]})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div style={{ backgroundImage: `url(${gridPhotos[4]})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+          <button
+            className="btn-primary invert"
+            style={{ position: 'absolute', bottom: 14, right: 14, padding: '10px 16px', fontSize: 13 }}
+          >
+            <Icon.Camera size={14} /> View all photos
+          </button>
         </div>
       </div>
 
-      {/* Body — two columns */}
-      <div style={{ padding: '40px 56px 56px', display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 56 }}>
+      {/* Mobile hero image + thumbnail strip */}
+      <div
+        className="detail-photo-hero"
+        style={{ backgroundImage: `url(${gridPhotos[0]})` }}
+        role="img"
+        aria-label={p.name}
+      />
+      <div className="detail-photo-strip">
+        {gridPhotos.map((src, i) => (
+          <div
+            key={i}
+            className="detail-photo-strip-thumb"
+            style={{ backgroundImage: `url(${src})` }}
+            role="img"
+            aria-label={`Photo ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Body — two columns desktop, single column mobile */}
+      <div className="detail-body">
 
         {/* LEFT: info */}
         <div>
@@ -207,7 +219,7 @@ export default function PropertyDetail() {
           {/* Amenities */}
           <div style={{ marginTop: 32 }}>
             <div style={{ fontSize: 22, fontWeight: 500, marginBottom: 18 }}>What this place offers</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, fontSize: 14 }}>
+            <div className="amenities-grid" style={{ fontSize: 14 }}>
               {AMENITIES.map((a) => {
                 const I = Icon[a.i];
                 return (
@@ -220,17 +232,9 @@ export default function PropertyDetail() {
           </div>
         </div>
 
-        {/* RIGHT: Booking card */}
+        {/* RIGHT: Booking card (inline on mobile, sticky on desktop) */}
         <div>
-          <div style={{
-            position: 'sticky',
-            top: 80,
-            border: '1px solid var(--c-hairline)',
-            borderRadius: 22,
-            padding: 24,
-            background: '#fff',
-            boxShadow: '0 8px 32px rgba(0,0,0,.05)',
-          }}>
+          <div className="booking-card">
             {/* Price */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
               <div>
@@ -290,7 +294,6 @@ export default function PropertyDetail() {
                       key={i}
                       onClick={() => {
                         if (isBooked) return;
-                        // Simple: click sets check-in, second click sets check-out
                         if (!range.in || (range.in && range.out)) {
                           setRange({ in: d, out: null });
                         } else if (d > range.in) {
@@ -358,6 +361,23 @@ export default function PropertyDetail() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Fixed mobile bottom booking bar */}
+      <div className="booking-bar-mobile">
+        <div className="booking-bar-mobile-price">
+          <div className="from-label">From</div>
+          <div className="price-line">
+            ${p.price} <span className="night-label">/ night</span>
+          </div>
+        </div>
+        <button
+          className="btn-primary coral"
+          style={{ padding: '14px 24px', flexShrink: 0 }}
+          onClick={() => navigate('/login')}
+        >
+          Reserve →
+        </button>
       </div>
     </div>
   );

@@ -13,15 +13,15 @@ export default function HearthLogo({ size = 28, inverted = false }) {
         <circle cx="16" cy="11" r="2" fill="#ff7759" />
       </svg>
       <span
+        className="topnav-logo-text"
         style={{
           fontFamily: 'var(--f-display)',
-          fontSize: 22,
           fontWeight: 500,
           letterSpacing: '-0.02em',
           color: textColor,
         }}
       >
-        hearth
+        stay and eat
       </span>
     </div>
   );

@@ -42,9 +42,8 @@ export default function Login() {
     >
       {/* Card */}
       <div
+        className="login-card"
         style={{
-          width: '100%',
-          maxWidth: 420,
           border: '1px solid var(--c-hairline)',
           borderRadius: 22,
           padding: '40px 40px 36px',
@@ -176,7 +175,7 @@ export default function Login() {
 
         {/* Sign-up link */}
         <p style={{ textAlign: 'center', fontSize: 14, color: 'var(--c-slate)', margin: 0 }}>
-          New to Hearth?{' '}
+          New to stay and eat?{' '}
           <Link
             to="/signup"
             style={{ color: 'var(--c-coral)', fontWeight: 600, textDecoration: 'none' }}
@@ -199,7 +198,7 @@ export default function Login() {
           fontFamily: 'var(--f-body)',
         }}
       >
-        ← Back to Hearth
+        ← Back to stay and eat
       </button>
     </div>
   );

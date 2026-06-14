@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import HearthLogo from './HearthLogo.jsx';
 import Icon from './Icon.jsx';
@@ -5,22 +6,25 @@ import Icon from './Icon.jsx';
 export default function TopNav() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handleHostToggle() {
     window.location.href = import.meta.env.VITE_HOST_APP_URL || 'http://localhost:3002';
   }
 
   return (
-    <header style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '20px 56px',
-      borderBottom: '1px solid var(--c-hairline)',
-      background: '#fff',
-      position: 'relative',
-      zIndex: 5,
-    }}>
+    <header
+      className="topnav"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottom: '1px solid var(--c-hairline)',
+        background: '#fff',
+        position: 'relative',
+        zIndex: 5,
+      }}
+    >
       {/* Logo */}
       <button
         onClick={() => navigate('/')}
@@ -30,8 +34,8 @@ export default function TopNav() {
         <HearthLogo />
       </button>
 
-      {/* Nav links */}
-      <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
+      {/* Center nav links — hidden on mobile via CSS class */}
+      <nav className="topnav-center-links" style={{ gap: 28, alignItems: 'center' }}>
         <button
           onClick={() => navigate('/')}
           style={{
@@ -81,8 +85,8 @@ export default function TopNav() {
       </nav>
 
       {/* Right side */}
-      <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-        {/* Host / Traveller segmented toggle */}
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+        {/* Host / Traveller segmented toggle — always visible */}
         <div
           style={{
             display: 'flex',
@@ -94,7 +98,6 @@ export default function TopNav() {
           role="group"
           aria-label="Switch between Traveller and Host view"
         >
-          {/* Traveller — active segment (this app) */}
           <button
             style={{
               background: 'var(--c-near-black)',
@@ -107,12 +110,12 @@ export default function TopNav() {
               fontFamily: 'var(--f-body)',
               cursor: 'default',
               transition: 'background .2s',
+              minHeight: 44,
             }}
             aria-pressed="true"
           >
             Traveller
           </button>
-          {/* Host — switches to host app */}
           <button
             onClick={handleHostToggle}
             style={{
@@ -126,6 +129,7 @@ export default function TopNav() {
               fontFamily: 'var(--f-body)',
               cursor: 'pointer',
               transition: 'background .2s, color .2s',
+              minHeight: 44,
             }}
             aria-pressed="false"
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--c-near-black)'; }}
@@ -135,17 +139,19 @@ export default function TopNav() {
           </button>
         </div>
 
+        {/* Globe — hidden on mobile via inline flex-shrink and CSS */}
         <button
+          className="topnav-center-links"
           style={{ background: 'transparent', border: 0, padding: 6, cursor: 'pointer', color: 'var(--c-slate)' }}
           aria-label="Language"
         >
           <Icon.Globe />
         </button>
 
-        {/* User menu pill */}
+        {/* User menu pill — desktop only */}
         <div
+          className="topnav-center-links"
           style={{
-            display: 'flex',
             alignItems: 'center',
             gap: 10,
             padding: '6px 8px 6px 14px',
@@ -174,7 +180,86 @@ export default function TopNav() {
             <Icon.User size={15} />
           </div>
         </div>
+
+        {/* Hamburger — mobile only */}
+        <button
+          className="topnav-hamburger"
+          onClick={() => setMenuOpen((v) => !v)}
+          style={{
+            background: 'transparent',
+            border: '1px solid var(--c-hairline)',
+            borderRadius: 999,
+            padding: '8px 10px',
+            cursor: 'pointer',
+            color: 'var(--c-near-black)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            minHeight: 44,
+          }}
+          aria-label="Menu"
+        >
+          <Icon.Menu size={18} />
+          <div
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg,#ffad9b,#ff7759)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Icon.User size={13} style={{ color: '#fff' }} />
+          </div>
+        </button>
       </div>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            right: 0,
+            left: 0,
+            background: '#fff',
+            borderBottom: '1px solid var(--c-hairline)',
+            padding: '12px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
+            zIndex: 20,
+            boxShadow: '0 8px 24px rgba(0,0,0,.08)',
+          }}
+        >
+          <button
+            onClick={() => { navigate('/'); setMenuOpen(false); }}
+            style={{ background: 'none', border: 0, textAlign: 'left', padding: '10px 0', fontSize: 15, fontFamily: 'var(--f-body)', fontWeight: location.pathname === '/' ? 600 : 400, cursor: 'pointer' }}
+          >
+            Stays
+          </button>
+          <button
+            onClick={() => setMenuOpen(false)}
+            style={{ background: 'none', border: 0, textAlign: 'left', padding: '10px 0', fontSize: 15, fontFamily: 'var(--f-body)', color: 'var(--c-slate)', cursor: 'pointer' }}
+          >
+            Experiences
+          </button>
+          <button
+            onClick={() => setMenuOpen(false)}
+            style={{ background: 'none', border: 0, textAlign: 'left', padding: '10px 0', fontSize: 15, fontFamily: 'var(--f-body)', color: 'var(--c-slate)', cursor: 'pointer' }}
+          >
+            Quality checks
+          </button>
+          <button
+            onClick={() => { navigate('/login'); setMenuOpen(false); }}
+            style={{ background: 'none', border: 0, textAlign: 'left', padding: '10px 0', fontSize: 15, fontFamily: 'var(--f-body)', color: 'var(--c-slate)', cursor: 'pointer' }}
+          >
+            Log in / Sign up
+          </button>
+        </div>
+      )}
     </header>
   );
 }

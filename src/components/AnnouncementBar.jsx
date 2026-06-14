@@ -1,12 +1,12 @@
 export default function AnnouncementBar() {
   return (
     <div
+      className="announcement-bar"
       style={{
         background: 'var(--c-near-black)',
         color: '#fff',
         textAlign: 'center',
         padding: '10px 16px',
-        fontSize: 13,
         fontFamily: 'var(--f-body)',
       }}
     >

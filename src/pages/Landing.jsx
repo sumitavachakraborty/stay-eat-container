@@ -4,6 +4,7 @@ import TopNav from '../components/TopNav.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 import CategoryStrip from '../components/CategoryStrip.jsx';
 import PropertyCard from '../components/PropertyCard.jsx';
+import BottomTabBar from '../components/BottomTabBar.jsx';
 import { getProperties, getCategories } from '../lib/api.js';
 
 export default function Landing() {
@@ -27,30 +28,33 @@ export default function Landing() {
       <TopNav />
 
       {/* Search bar section */}
-      <div style={{ padding: '32px 56px 12px', background: '#fff' }}>
+      <div className="searchbar-section">
         <SearchBar />
       </div>
 
       <CategoryStrip categories={categories} />
 
       {/* Property grid */}
-      <div style={{ padding: '28px 56px 56px', background: '#fff' }}>
+      <div className="property-grid-section">
         <div className="mono" style={{ marginBottom: 14 }}>Near you · Boulder, CO</div>
 
         {loading ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28 }}>
+          <div className="skeleton-grid">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} style={{ aspectRatio: '1/1', borderRadius: 22, background: 'var(--c-stone)', animation: 'fade-in .5s ease both' }} />
             ))}
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28 }}>
+          <div className="property-grid">
             {properties.map((p, i) => (
               <PropertyCard key={p.id} p={p} idx={i} />
             ))}
           </div>
         )}
       </div>
+
+      {/* Floating bottom tab bar — visible on mobile only */}
+      <BottomTabBar />
     </div>
   );
 }

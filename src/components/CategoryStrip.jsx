@@ -6,10 +6,10 @@ export default function CategoryStrip({ categories = [] }) {
 
   return (
     <div
+      className="category-strip"
       style={{
         display: 'flex',
         alignItems: 'center',
-        padding: '20px 56px',
         gap: 32,
         borderBottom: '1px solid var(--c-hairline)',
         background: '#fff',
@@ -39,6 +39,7 @@ export default function CategoryStrip({ categories = [] }) {
                 transition: 'all .2s',
                 minWidth: 64,
                 flexShrink: 0,
+                minHeight: 44,
               }}
             >
               <I size={22} />
@@ -57,13 +58,12 @@ export default function CategoryStrip({ categories = [] }) {
         })}
       </div>
 
-      {/* Filter controls */}
-      <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexShrink: 0 }}>
+      {/* Filter controls — hidden at ≤480 via CSS */}
+      <div className="category-strip-filters" style={{ gap: 10, alignItems: 'center', flexShrink: 0 }}>
         <button
           className="pill-outline"
           style={{ display: 'flex', gap: 8, alignItems: 'center', borderColor: 'var(--c-hairline)', color: 'var(--c-near-black)' }}
         >
-          {/* Sliders icon inline */}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
             <path d="M4 6h6M14 6h6M4 12h2M10 12h10M4 18h12M20 18h0" />
             <circle cx="12" cy="6" r="2" />
@@ -73,7 +73,6 @@ export default function CategoryStrip({ categories = [] }) {
           Filters
         </button>
 
-        {/* Tax toggle */}
         <div
           style={{
             display: 'flex',

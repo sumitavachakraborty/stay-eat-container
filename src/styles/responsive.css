@@ -1,0 +1,468 @@
+/* ============================================================
+   stay and eat — Responsive layer
+   Breakpoints: ≤1024 tablet | ≤768 mobile | ≤480 small
+   Mobile-last (max-width) media queries.
+   ============================================================ */
+
+/* ─── Global page padding ─────────────────────────────────── */
+.page-pad {
+  padding-left: 56px;
+  padding-right: 56px;
+}
+@media (max-width: 768px) {
+  .page-pad {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .page-pad {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ─── TopNav ──────────────────────────────────────────────── */
+.topnav {
+  padding: 20px 56px;
+}
+.topnav-center-links {
+  display: flex;
+}
+.topnav-hamburger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .topnav {
+    padding: 14px 20px;
+  }
+  .topnav-center-links {
+    display: none;
+  }
+  .topnav-hamburger {
+    display: flex;
+  }
+}
+@media (max-width: 480px) {
+  .topnav {
+    padding: 12px 16px;
+  }
+}
+
+/* HearthLogo shrinks on mobile */
+.topnav-logo-text {
+  font-size: 22px;
+}
+@media (max-width: 768px) {
+  .topnav-logo-text {
+    font-size: 18px;
+  }
+}
+
+/* ─── AnnouncementBar ─────────────────────────────────────── */
+.announcement-bar {
+  font-size: 13px;
+}
+@media (max-width: 480px) {
+  .announcement-bar {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+}
+
+/* ─── SearchBar ───────────────────────────────────────────── */
+.search-desktop {
+  display: flex;
+}
+.search-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .search-desktop {
+    display: none;
+  }
+  .search-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--c-hairline);
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+    cursor: pointer;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--c-slate);
+    width: 100%;
+  }
+}
+
+/* SearchBar wrapper section */
+.searchbar-section {
+  padding: 32px 56px 12px;
+  background: #fff;
+}
+@media (max-width: 768px) {
+  .searchbar-section {
+    padding: 16px 20px 10px;
+  }
+}
+@media (max-width: 480px) {
+  .searchbar-section {
+    padding: 12px 16px 8px;
+  }
+}
+
+/* ─── CategoryStrip ───────────────────────────────────────── */
+.category-strip {
+  padding: 20px 56px;
+}
+.category-strip-filters {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .category-strip {
+    padding: 12px 20px;
+  }
+}
+@media (max-width: 480px) {
+  .category-strip {
+    padding: 10px 16px;
+  }
+  .category-strip-filters {
+    display: none;
+  }
+}
+
+/* ─── Property Grid ───────────────────────────────────────── */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1024px) {
+  .property-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .property-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .property-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Property grid section padding */
+.property-grid-section {
+  padding: 28px 56px 56px;
+  background: #fff;
+}
+@media (max-width: 768px) {
+  .property-grid-section {
+    padding: 20px 20px 80px; /* extra bottom for tab bar */
+  }
+}
+@media (max-width: 480px) {
+  .property-grid-section {
+    padding: 16px 16px 80px;
+  }
+}
+
+/* Skeleton placeholders match grid */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1024px) {
+  .skeleton-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .skeleton-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .skeleton-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ─── PropertyDetail ──────────────────────────────────────── */
+
+/* Mini nav */
+.detail-nav {
+  padding: 20px 56px;
+}
+@media (max-width: 768px) {
+  .detail-nav {
+    padding: 14px 20px;
+  }
+}
+@media (max-width: 480px) {
+  .detail-nav {
+    padding: 12px 16px;
+  }
+}
+
+/* Title area */
+.detail-title-area {
+  padding: 28px 56px 0;
+}
+@media (max-width: 768px) {
+  .detail-title-area {
+    padding: 20px 20px 0;
+  }
+}
+@media (max-width: 480px) {
+  .detail-title-area {
+    padding: 16px 16px 0;
+  }
+}
+
+/* Title clamp */
+.detail-title {
+  font-size: clamp(28px, 6vw, 56px);
+}
+
+/* Photo grid — desktop */
+.detail-photo-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  height: 460px;
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 20px 56px 0;
+}
+/* Photo hero — mobile */
+.detail-photo-hero {
+  display: none;
+}
+.detail-photo-strip {
+  display: none;
+}
+@media (max-width: 768px) {
+  .detail-photo-grid {
+    display: none;
+  }
+  .detail-photo-hero {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+  }
+  .detail-photo-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px 20px;
+  }
+  .detail-photo-strip::-webkit-scrollbar {
+    display: none;
+  }
+  .detail-photo-strip-thumb {
+    min-width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+  }
+}
+
+/* Body columns */
+.detail-body {
+  padding: 40px 56px 56px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 56px;
+}
+@media (max-width: 768px) {
+  .detail-body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px 20px 120px; /* bottom space for fixed booking bar */
+  }
+}
+@media (max-width: 480px) {
+  .detail-body {
+    padding: 20px 16px 120px;
+  }
+}
+
+/* Amenities grid */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 768px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Booking card — desktop sticky */
+.booking-card {
+  position: sticky;
+  top: 80px;
+  border: 1px solid var(--c-hairline);
+  border-radius: 22px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,.05);
+}
+/* On mobile: non-sticky, no box-shadow, stacked inline */
+.booking-card-desktop-only {
+  display: block;
+}
+.booking-bar-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .booking-card {
+    position: static;
+    box-shadow: none;
+    border: 1px solid var(--c-hairline);
+    border-radius: 22px;
+  }
+  .booking-card-desktop-only {
+    display: block; /* still shown inline */
+  }
+  /* Fixed bottom action bar */
+  .booking-bar-mobile {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: #fff;
+    border-top: 1px solid var(--c-hairline);
+    box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+    z-index: 50;
+  }
+  .booking-bar-mobile-price {
+    flex: 1;
+  }
+  .booking-bar-mobile-price .from-label {
+    font-size: 11px;
+    color: var(--c-slate);
+  }
+  .booking-bar-mobile-price .price-line {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .booking-bar-mobile-price .price-line .night-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--c-slate);
+  }
+}
+@media (max-width: 480px) {
+  .booking-bar-mobile {
+    padding: 0 16px;
+  }
+}
+
+/* ─── Bottom Tab Bar ──────────────────────────────────────── */
+.bottom-tab-bar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .bottom-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    height: 64px;
+    border-radius: 32px;
+    background: #fff;
+    box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 12px;
+    z-index: 40;
+  }
+}
+
+/* Hide tab bar on detail page (it would clash with the booking bar) */
+.detail-page .bottom-tab-bar {
+  display: none;
+}
+
+/* Tab bar buttons */
+.tab-btn {
+  background: transparent;
+  border: 0;
+  color: var(--c-slate);
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-family: var(--f-body);
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+}
+.tab-btn.active {
+  color: var(--c-coral);
+}
+.tab-btn-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffad9b, #ff7759);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(255,119,89,.45);
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ─── Login card ──────────────────────────────────────────── */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 20px 24px;
+    border-radius: 16px;
+  }
+}
+
+/* ─── Misc overflow prevention ────────────────────────────── */
+@media (max-width: 480px) {
+  .app {
+    overflow-x: hidden;
+  }
+  img {
+    max-width: 100%;
+  }
+}
