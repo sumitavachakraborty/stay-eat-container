@@ -1,6 +1,6 @@
-# se-container — Hearth Traveller Web
+# se-container — stay and eat Traveller Web
 
-The **customer-facing (Traveller) app** for the Hearth homestay platform.
+The **customer-facing (Traveller) app** for the stay and eat homestay platform.
 Built with Vite + React 18 + react-router-dom v6. No heavy UI libraries — all styling via the ported design-token CSS.
 
 ## Stack
@@ -52,7 +52,7 @@ docker build \
 |------|------|-------|
 | `/` | Landing | Announcement bar, TopNav, SearchBar, CategoryStrip, 4-col PropertyGrid |
 | `/property/:id` | Property Detail | Photo grid, amenities, sticky booking card with mini-calendar |
-| `/login` | Login | Email + password form; on success stores `hearth_token` in localStorage |
+| `/login` | Login | Email + password form; on success stores `se_token` in localStorage |
 | `*` | — | Redirects to `/` |
 
 ## Host / Traveller toggle
@@ -64,7 +64,7 @@ The TopNav contains a pill segmented control:
 
 ## Booking flow
 
-The "Reserve" button on the Property Detail page redirects to `/login`. Booking requires authentication. After login the token is stored under `localStorage.hearth_token`.
+The "Reserve" button on the Property Detail page redirects to `/login`. Booking requires authentication. After login the token is stored under `localStorage.se_token`.
 
 ## API resilience
 

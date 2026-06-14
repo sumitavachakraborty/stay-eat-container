@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import HearthLogo from '../components/HearthLogo.jsx';
+import Logo from '../components/Logo.jsx';
 import { login } from '../lib/api.js';
 
 export default function Login() {
@@ -18,7 +18,7 @@ export default function Login() {
       const data = await login(email, password);
       const token = data.token ?? data.access_token ?? data.jwt;
       if (!token) throw new Error('No token in response');
-      localStorage.setItem('hearth_token', token);
+      localStorage.setItem('se_token', token);
       navigate('/');
     } catch (err) {
       setError(err.message || 'Login failed. Check your credentials.');
@@ -53,7 +53,7 @@ export default function Login() {
       >
         {/* Logo */}
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
-          <HearthLogo size={30} />
+          <Logo size={30} />
         </div>
 
         <h1

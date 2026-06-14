@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import HearthLogo from './HearthLogo.jsx';
+import Logo from './Logo.jsx';
 import Icon from './Icon.jsx';
 
 export default function TopNav() {
@@ -31,7 +31,7 @@ export default function TopNav() {
         style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer' }}
         aria-label="Go to home"
       >
-        <HearthLogo />
+        <Logo />
       </button>
 
       {/* Center nav links — hidden on mobile via CSS class */}

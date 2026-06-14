@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
-import HearthLogo from '../components/HearthLogo.jsx';
+import Logo from '../components/Logo.jsx';
 import { getProperty } from '../lib/api.js';
 
 const AMENITIES = [
@@ -89,7 +89,7 @@ export default function PropertyDetail() {
           style={{ background: 'none', border: 0, cursor: 'pointer', padding: 0 }}
           onClick={() => navigate('/')}
         >
-          <HearthLogo size={22} />
+          <Logo size={22} />
         </button>
         <div style={{ display: 'flex', gap: 18 }}>
           <button className="btn-secondary">Share</button>

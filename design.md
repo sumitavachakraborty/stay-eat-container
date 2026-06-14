@@ -1,21 +1,17 @@
 # stay and eat — Design System & Responsive Spec
 
-Single source of truth for both frontends (`se-container`, `se-host-frontend`). Derived from the original Hearth handoff; **the visual language does not change** — only the brand name and the addition of a proper mobile/responsive layer.
+Single source of truth for both frontends (`se-container`, `se-host-frontend`). Derived from the original design handoff; **the visual language does not change** — only the brand name and the addition of a proper mobile/responsive layer.
 
 ---
 
 ## 1. Brand
 
-- **Name:** `stay and eat` (replaces `hearth` everywhere user-visible).
-- **Wordmark:** lowercase `stay and eat`, Space Grotesk, 500 weight, `letter-spacing: -0.02em` (same treatment the old `hearth` wordmark used).
+- **Name:** `stay and eat` — applied everywhere (UI text, code identifiers, test data, docs).
+- **Wordmark:** lowercase `stay and eat`, Space Grotesk, 500 weight, `letter-spacing: -0.02em`.
 - **Host app wordmark:** `stay and eat · host`.
-- **Logo mark:** keep the existing house glyph + coral dot SVG. Only the text next to it changes.
-- **Phrasing swaps:**
-  - `Find your hearth` → `Find your stay`
-  - `Hearth Rewards` → `stay and eat Rewards`
-  - `Hearth points` / `Hearth Circle` → `stay and eat points` / `stay and eat Circle`
-  - Page `<title>`: `Hearth — …` → `stay and eat — …`
-- **Do NOT change:** internal identifiers — localStorage key `hearth_token`, seed login emails `*@hearth.test` (documented test credentials). These are not user-facing brand text.
+- **Logo mark:** house glyph + coral dot SVG. Logo component is `Logo` (`src/components/Logo.jsx` in `se-container`); the host app renders the wordmark inline.
+- **Established copy:** `Find your stay`, `stay and eat Rewards`, `stay and eat points`, `stay and eat Circle`, page `<title>`: `stay and eat — …`.
+- **Internal identifiers (also renamed):** localStorage token key is `se_token` (both frontends); seed login emails are `*@stayandeat.test`.
 
 ---
 
@@ -118,6 +114,6 @@ A floating bottom tab bar on ≤768 for the traveller app (Home · Saved · cent
 ## 6. Constraints
 
 - **Do not** change colors, fonts, radii, or the component visual style — only rebrand text + add responsive rules.
-- **Do not** rename component files (e.g. keep `HearthLogo.jsx`); just change rendered text/strings.
+- **Do not** change colors, fonts, radii, or component visual style. The logo component is `Logo`.
 - Keep everything fast/minimal (no new heavy deps). CSS media queries + small JS (`window.matchMedia`) only where needed.
 - Re-verify each app builds (`npm run build`) after changes.

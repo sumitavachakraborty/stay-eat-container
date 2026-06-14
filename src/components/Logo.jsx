@@ -1,4 +1,4 @@
-export default function HearthLogo({ size = 28, inverted = false }) {
+export default function Logo({ size = 28, inverted = false }) {
   const strokeColor = inverted ? '#ffffff' : '#17171c';
   const textColor = inverted ? '#ffffff' : 'var(--c-near-black)';
   return (
