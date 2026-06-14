@@ -1,6 +1,6 @@
 # stay and eat — Design System & Responsive Spec
 
-Single source of truth for both frontends (`se-container`, `se-host-frontend`). Derived from the original design handoff; **the visual language does not change** — only the brand name and the addition of a proper mobile/responsive layer.
+Single source of truth for both frontends (`stay-eat-container`, `stay-eat-host-ui`). Derived from the original design handoff; **the visual language does not change** — only the brand name and the addition of a proper mobile/responsive layer.
 
 ---
 
@@ -9,7 +9,7 @@ Single source of truth for both frontends (`se-container`, `se-host-frontend`). 
 - **Name:** `stay and eat` — applied everywhere (UI text, code identifiers, test data, docs).
 - **Wordmark:** lowercase `stay and eat`, Space Grotesk, 500 weight, `letter-spacing: -0.02em`.
 - **Host app wordmark:** `stay and eat · host`.
-- **Logo mark:** house glyph + coral dot SVG. Logo component is `Logo` (`src/components/Logo.jsx` in `se-container`); the host app renders the wordmark inline.
+- **Logo mark:** house glyph + coral dot SVG. Logo component is `Logo` (`src/components/Logo.jsx` in `stay-eat-container`); the host app renders the wordmark inline.
 - **Established copy:** `Find your stay`, `stay and eat Rewards`, `stay and eat points`, `stay and eat Circle`, page `<title>`: `stay and eat — …`.
 - **Internal identifiers (also renamed):** localStorage token key is `se_token` (both frontends); seed login emails are `*@stayandeat.test`.
 
@@ -57,7 +57,7 @@ Global mobile rules (`≤768px`):
 
 ## 4. Per-screen responsive behavior
 
-### se-container (traveller)
+### stay-eat-container (traveller)
 
 **TopNav**
 - Desktop: logo · center nav links · Host/Traveller toggle · globe · user pill.
@@ -83,7 +83,7 @@ Global mobile rules (`≤768px`):
 
 **Login:** already a centered card — ensure it fits small screens (max-width, padding).
 
-### se-host-frontend (host)
+### stay-eat-host-ui (host)
 
 **HostHeader**
 - Desktop: brand `stay and eat · host` · tabs (Today/Listings/Earnings/Inbox) · Host/Traveller toggle · New listing · avatar.
@@ -113,7 +113,6 @@ A floating bottom tab bar on ≤768 for the traveller app (Home · Saved · cent
 
 ## 6. Constraints
 
-- **Do not** change colors, fonts, radii, or the component visual style — only rebrand text + add responsive rules.
-- **Do not** change colors, fonts, radii, or component visual style. The logo component is `Logo`.
+- **Do not** change colors, fonts, radii, or the component visual style — only rebrand text + add responsive rules. The logo component is `Logo`.
 - Keep everything fast/minimal (no new heavy deps). CSS media queries + small JS (`window.matchMedia`) only where needed.
 - Re-verify each app builds (`npm run build`) after changes.

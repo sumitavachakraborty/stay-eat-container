@@ -1,4 +1,4 @@
-# se-container — stay and eat Traveller Web
+# stay-eat-container — stay and eat Traveller Web
 
 The **customer-facing (Traveller) app** for the stay and eat homestay platform.
 Built with Vite + React 18 + react-router-dom v6. No heavy UI libraries — all styling via the ported design-token CSS.
@@ -43,7 +43,7 @@ Vite inlines these at build time. When building the Docker image, pass them as b
 docker build \
   --build-arg VITE_API_URL=https://api.yourdomain.com/api/v1 \
   --build-arg VITE_HOST_APP_URL=https://host.yourdomain.com \
-  -t se-container .
+  -t stay-eat-container .
 ```
 
 ## Routes
@@ -75,6 +75,6 @@ All `GET` calls in `src/lib/api.js` are wrapped in `try/catch`. If the API is un
 Multi-stage build. Stage 1 builds the Vite SPA; Stage 2 serves it with `nginx:alpine` on port 80 with SPA fallback (`try_files`) and gzip enabled.
 
 ```bash
-docker build -t se-container .
-docker run -p 3000:80 se-container
+docker build -t stay-eat-container .
+docker run -p 3000:80 stay-eat-container
 ```
