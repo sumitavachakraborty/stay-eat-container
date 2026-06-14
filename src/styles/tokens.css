@@ -1,0 +1,122 @@
+/* Hearth — homestay platform built on Cohere-style restraint + Airbnb-adjacent warmth */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Brand & accent */
+  --c-black: #000000;
+  --c-near-black: #17171c;
+  --c-deep-green: #003c33;
+  --c-dark-navy: #071829;
+  --c-action-blue: #1863dc;
+  --c-coral: #ff7759;
+  --c-soft-coral: #ffad9b;
+
+  /* Surface */
+  --c-canvas: #ffffff;
+  --c-stone: #eeece7;
+  --c-pale-green: #edfce9;
+  --c-pale-blue: #f1f5ff;
+  --c-card-border: #f2f2f2;
+
+  /* Text & rules */
+  --c-ink: #212121;
+  --c-muted: #93939f;
+  --c-slate: #75758a;
+  --c-hairline: #d9d9dd;
+  --c-border-light: #e5e7eb;
+
+  /* Semantic */
+  --c-focus: #4c6ee6;
+  --c-error: #b30000;
+
+  /* Type */
+  --f-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --f-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --r-pill: 32px;
+}
+
+* { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body { margin: 0; padding: 0; }
+
+.app, .app * { font-family: var(--f-body); color: var(--c-ink); }
+.app { background: var(--c-canvas); }
+
+.display { font-family: var(--f-display); font-weight: 400; letter-spacing: -0.02em; line-height: 1; }
+.mono { font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: var(--c-slate); }
+
+/* Buttons */
+.btn-primary {
+  background: var(--c-near-black); color: #fff;
+  border: 0; border-radius: var(--r-pill);
+  padding: 14px 24px; font: 500 14px/1 var(--f-body);
+  cursor: pointer; transition: transform .2s cubic-bezier(.2,.7,.3,1), background .2s, box-shadow .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: #000; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.btn-primary.invert { background: #fff; color: var(--c-near-black); }
+.btn-primary.invert:hover { background: #f5f5f5; }
+.btn-primary.coral { background: var(--c-coral); }
+.btn-primary.coral:hover { background: #ff6347; }
+
+.btn-secondary {
+  background: transparent; border: 0; color: var(--c-ink);
+  padding: 0; font: 500 14px/1.4 var(--f-body); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+.btn-secondary:hover { color: var(--c-coral); }
+
+.pill-outline {
+  background: transparent; border: 1px solid var(--c-near-black); color: var(--c-near-black);
+  border-radius: var(--r-xl); padding: 8px 16px; font: 400 14px/1 var(--f-body);
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.pill-outline:hover { background: var(--c-near-black); color: #fff; }
+.pill-outline.active { background: var(--c-near-black); color: #fff; }
+
+/* Coral chip */
+.chip-coral {
+  border: 1px solid var(--c-soft-coral);
+  background: #fff7f4;
+  color: var(--c-near-black);
+  border-radius: var(--r-sm);
+  padding: 8px 14px; font: 500 13px/1 var(--f-body);
+  cursor: pointer; transition: all .15s;
+}
+.chip-coral.active { background: var(--c-coral); border-color: var(--c-coral); color: #fff; }
+
+/* Card */
+.card { border-radius: var(--r-md); background: #fff; }
+.media-card { border-radius: var(--r-lg); overflow: hidden; position: relative; background: var(--c-stone); }
+
+/* Hairline */
+.hr { height: 1px; background: var(--c-hairline); border: 0; }
+
+/* Focus ring */
+input:focus, button:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+/* Subtle entry animations */
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.fade-up { animation: fade-up .6s cubic-bezier(.2,.7,.3,1) both; }
+.fade-in { animation: fade-in .5s ease both; }
+
+/* Status chip (mono) */
+.status {
+  font-family: var(--f-mono); text-transform: uppercase; font-size: 11px; letter-spacing: 0.12em;
+  padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px;
+}
+.status.live { background: #edfce9; color: #003c33; }
+.status.pending { background: #fff7f4; color: #a8462f; }
+.status.draft { background: #f4f4f4; color: #555; }
+
+.dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }
